@@ -11,10 +11,10 @@ function displayGames(array) {
             <h1 class="title">${array[i].title}</h1>
             <div class="media">
                 <img src="${proxiedUrl}" crossorigin="anonymous">
-                <div class="percentageOff">${percentageOff}</div>
+                ${array[i].msrp ? `<div class="percentageOff">${percentageOff}</div>` : ""}
             </div>
             <div class="info">
-                <p class="price">$${array[i].price} <span class="msrp">$${array[i].msrp}</span></p><hr>
+                <p class="price">$${array[i].price} ${array[i].msrp ? `<span class="msrp">$${array[i].msrp}</span>` : ""}</p><hr>
                 <p class="condition">Condition: ${array[i].condition}</p>
                 <p class="link"><a href="${array[i].link}" target="_blank">BGG link</a></p>
                 ${array[i].info ? `<p class="info">${array[i].info}</p>` : ""}
@@ -27,7 +27,8 @@ function displayGames(array) {
 function generateImage() {
     snapdom.toPng(main, {
         backgroundColor: "#fff",
-        exclude: [".link"]
+        exclude: [".link"],
+        excludeMode: "remove"
     }).then(function(img) {
         saveAs(img.src, 'boardgame-sale.png');
     });;
