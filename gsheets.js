@@ -12,8 +12,7 @@ let gapiInited = false;
 let gisInited = false;
 let retries = 3;
 
-let sheetId = (localStorage.getItem("sheetID") !== null) ? JSON.parse(localStorage.getItem("sheetID")) : prompt("Enter the Google Spreadsheet ID");
-localStorage.setItem("sheetID", JSON.stringify(sheetId));
+let sheetId = "1kZcRqo-fF3x3WvcV5Fg7TskiHUN1IWjRwyCCrVWP9Nc";
 
 function gapiLoaded() {
   gapi.load('client', initializeGapiClient);
