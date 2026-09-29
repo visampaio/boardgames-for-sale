@@ -7,7 +7,17 @@
 </head>
 
 <body>
-    <aside><button onclick="generateImage()">Download as image</button></aside>
+    <aside>
+      <button onclick="generateImage()">Download as image</button>
+      <div id="imageSettings">
+        <label><input type="checkbox" id="title" checked>Title</label>
+        <label><input type="checkbox" id="media" checked>Thumbnail</label>
+        <label><input type="checkbox" id="percentageOff" checked>Discount</label>
+        <label><input type="checkbox" id="msrp" checked>MSRP</label>
+        <label><input type="checkbox" id="condition" checked>Condition</label>
+        <label><input type="checkbox" id="info" checked>Notes</label>
+      </div>
+    </aside>
 
     <main></main>    
 

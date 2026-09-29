@@ -25,13 +25,28 @@ function displayGames(array) {
 }
 
 function generateImage() {
+    let excludeSettings = getExcludeSettings();
     snapdom.toPng(main, {
         backgroundColor: "#fff",
-        exclude: [".link"],
+        exclude: excludeSettings,
         excludeMode: "remove"
     }).then(function(img) {
         saveAs(img.src, 'boardgame-sale.png');
     });;
+}
+
+function getExcludeSettings() {
+    let array = [".link"];
+    const checkboxes = document.querySelectorAll("#imageSettings input");
+
+    for (let i = 0; i < checkboxes.length; i++) {
+        if (!checkboxes[i].checked) {
+            let string = "." + checkboxes[i].id;
+            array.push(string);
+        }
+    }
+
+    return array;
 }
 
 // https://stackoverflow.com/a/51478809

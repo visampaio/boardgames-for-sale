@@ -59,8 +59,8 @@ body {
 }
 
 aside {
-    width: auto;
-    padding: 20px 0 0 20px;
+    padding: 20px;
+    position: fixed;
 }
 
 button {
@@ -69,7 +69,20 @@ button {
     border-radius: 25px;
     background-color: #DB4D0B;
     color: white;
-    
+    font-size: 1rem;
+}
+
+label {
+    display: block;
+}
+
+#imageSettings {
+    margin: 20px 0;
+    font-size: 1.2rem;
+}
+
+input[type='checkbox'] {
+    accent-color: #DB4D0B;
 }
 
 main {
