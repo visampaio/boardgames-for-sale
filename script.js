@@ -5,7 +5,7 @@ const hideDetails = document.getElementById("hideDetails");
 function displayGames(array) {
     let string = "";
     for (let i = 0; i < array.length; i++) {
-        let percentageOff = 100 - Math.round(Number(array[i].price)*100/Number(array[i].msrp)) + "% off";
+        let percentageOff = calcDiscount(array[i]);
         let proxiedUrl = "https://rapid-wind-9e68.viviane-sm3.workers.dev/?url=" + encodeURIComponent(array[i].thumbnail);
         string += `
         <div class="card">
@@ -15,7 +15,7 @@ function displayGames(array) {
             </div>
             <h1 class="title">${array[i].title}</h1>
             <div class="cardInfo">
-                <p class="price">$${array[i].price} ${array[i].msrp ? `<span class="msrp">$${array[i].msrp}</span>` : ""}</p>
+                <p class="price">$${array[i].price} ${array[i].msrp && array[i].msrp !== "OOP" ? `<span class="msrp">$${array[i].msrp}</span>` : ""}</p>
                 <div class="details ${hideDetails.checked ? "removed" : ""}"><hr>
                     <p class="condition">Condition: ${array[i].condition}</p>
                     <p class="link"><a href="${array[i].link}" target="_blank">BGG link</a></p>
@@ -27,30 +27,23 @@ function displayGames(array) {
     main.innerHTML = string;
 }
 
+function calcDiscount(array) {
+    let discount;
+    
+    if (array.msrp == "OOP") { discount = "Out of print!"; }
+    else { discount = 100 - Math.round(Number(array.price)*100/Number(array.msrp)) + "% off"; }
+
+    return discount;
+}
+
 function generateImage() {
-    //let excludeSettings = getExcludeSettings();
     snapdom.toPng(main, {
-        backgroundColor: "#fff",
         exclude: [".link"],
         excludeMode: "remove",
     }).then(function(img) {
         saveAs(img.src, 'boardgame-sale.png');
     });;
 }
-
-// function getExcludeSettings() {
-//     let array = [".link"];
-//     const checkboxes = document.querySelectorAll("#imageSettings input");
-
-//     for (let i = 0; i < checkboxes.length; i++) {
-//         if (!checkboxes[i].checked) {
-//             let string = "." + checkboxes[i].id;
-//             array.push(string);
-//         }
-//     }
-
-//     return array;
-// }
 
 // https://stackoverflow.com/a/51478809
 function saveAs(uri, filename) {
