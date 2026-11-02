@@ -89,12 +89,16 @@ main {
     width: 80%;
     display: grid;
     position: relative;
-    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .card {
     padding: 10px;
-    width: 100%;
+    background-color: #F5F5F5;
+    text-align: center;
+    margin: 10px 10px 20px 10px;
+    border: 1px dashed #CDCDCD;
+    border-radius: 10px;
 }
 
 .card h1 {
@@ -117,24 +121,21 @@ main {
     height: 200px;
 }
 
-.cardInfo {
-    width: 80%;
-}
-
 .cardInfo p {
     margin-bottom: 5px;
 }
 
 .percentageOff {
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 0;
+    left: 0;
     z-index: 2;
     background-color: #db4d0b;
     color: #fff;
     padding: 3px 4px;
     font-weight: 600;
     font-size: 25px;
+    border-radius: 5px;
 }
 
 .price {

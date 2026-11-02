@@ -38,6 +38,7 @@ function calcDiscount(array) {
 
 function generateImage() {
     snapdom.toPng(main, {
+        backgroundColor: "#fff",
         exclude: [".link"],
         excludeMode: "remove",
     }).then(function(img) {
