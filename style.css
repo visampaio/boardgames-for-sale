@@ -54,7 +54,6 @@ THEME STYLE
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1rem;
-    background-color: #C9EDDC;
     display: flex;
 }
 
@@ -76,7 +75,7 @@ label {
     display: block;
 }
 
-#imageSettings {
+#imageSettings, #pageSettings {
     margin: 20px 0;
     font-size: 1.2rem;
 }
@@ -128,17 +127,18 @@ main {
 
 .percentageOff {
     position: absolute;
-    bottom: 2px;
-    left: 0;
+    top: 2px;
+    left: 2px;
     z-index: 2;
     background-color: #db4d0b;
     color: #fff;
     padding: 3px 4px;
     font-weight: 600;
+    font-size: 25px;
 }
 
 .price {
-    font-size: 1.6rem;
+    font-size: 25px;
     font-weight: 600;
 }
 
