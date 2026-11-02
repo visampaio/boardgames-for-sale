@@ -117,11 +117,11 @@ main {
     height: 200px;
 }
 
-.info {
+.cardInfo {
     width: 80%;
 }
 
-.info p {
+.cardInfo p {
     margin-bottom: 5px;
 }
 

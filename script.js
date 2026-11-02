@@ -9,12 +9,12 @@ function displayGames(array) {
         let proxiedUrl = "https://rapid-wind-9e68.viviane-sm3.workers.dev/?url=" + encodeURIComponent(array[i].thumbnail);
         string += `
         <div class="card">
-            <h1 class="title">${array[i].title}</h1>
             <div class="media">
                 <img src="${proxiedUrl}" crossorigin="anonymous">
                 ${array[i].msrp ? `<div class="percentageOff">${percentageOff}</div>` : ""}
             </div>
-            <div class="info">
+            <h1 class="title">${array[i].title}</h1>
+            <div class="cardInfo">
                 <p class="price">$${array[i].price} ${array[i].msrp ? `<span class="msrp">$${array[i].msrp}</span>` : ""}</p>
                 <div class="details ${hideDetails.checked ? "removed" : ""}"><hr>
                     <p class="condition">Condition: ${array[i].condition}</p>
