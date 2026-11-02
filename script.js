@@ -1,5 +1,6 @@
 let bgList = [];
 const main = document.getElementsByTagName("main")[0];
+const hideDetails = document.getElementById("hideDetails");
 
 function displayGames(array) {
     let string = "";
@@ -14,10 +15,12 @@ function displayGames(array) {
                 ${array[i].msrp ? `<div class="percentageOff">${percentageOff}</div>` : ""}
             </div>
             <div class="info">
-                <p class="price">$${array[i].price} ${array[i].msrp ? `<span class="msrp">$${array[i].msrp}</span>` : ""}</p><hr>
-                <p class="condition">Condition: ${array[i].condition}</p>
-                <p class="link"><a href="${array[i].link}" target="_blank">BGG link</a></p>
-                ${array[i].info ? `<p class="info">${array[i].info}</p>` : ""}
+                <p class="price">$${array[i].price} ${array[i].msrp ? `<span class="msrp">$${array[i].msrp}</span>` : ""}</p>
+                <div class="details ${hideDetails.checked ? "removed" : ""}"><hr>
+                    <p class="condition">Condition: ${array[i].condition}</p>
+                    <p class="link"><a href="${array[i].link}" target="_blank">BGG link</a></p>
+                    ${array[i].info ? `<p class="info">${array[i].info}</p>` : ""}
+                </div>
             </div>
         </div>`
     }
@@ -25,29 +28,29 @@ function displayGames(array) {
 }
 
 function generateImage() {
-    let excludeSettings = getExcludeSettings();
+    //let excludeSettings = getExcludeSettings();
     snapdom.toPng(main, {
         backgroundColor: "#fff",
-        exclude: excludeSettings,
-        excludeMode: "remove"
+        exclude: [".link"],
+        excludeMode: "remove",
     }).then(function(img) {
         saveAs(img.src, 'boardgame-sale.png');
     });;
 }
 
-function getExcludeSettings() {
-    let array = [".link"];
-    const checkboxes = document.querySelectorAll("#imageSettings input");
+// function getExcludeSettings() {
+//     let array = [".link"];
+//     const checkboxes = document.querySelectorAll("#imageSettings input");
 
-    for (let i = 0; i < checkboxes.length; i++) {
-        if (!checkboxes[i].checked) {
-            let string = "." + checkboxes[i].id;
-            array.push(string);
-        }
-    }
+//     for (let i = 0; i < checkboxes.length; i++) {
+//         if (!checkboxes[i].checked) {
+//             let string = "." + checkboxes[i].id;
+//             array.push(string);
+//         }
+//     }
 
-    return array;
-}
+//     return array;
+// }
 
 // https://stackoverflow.com/a/51478809
 function saveAs(uri, filename) {
@@ -74,3 +77,10 @@ function saveAs(uri, filename) {
 
     }
 }
+
+hideDetails.addEventListener("change", function() {
+    const divs = document.querySelectorAll(".details");
+    for (let i = 0; i < divs.length; i++) {
+        divs[i].classList.toggle("removed");
+    }
+})
