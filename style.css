@@ -119,6 +119,7 @@ main {
 .media img {
     object-fit: contain;
     height: 200px;
+    max-width: 100%;
 }
 
 .cardInfo p {
