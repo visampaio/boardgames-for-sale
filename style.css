@@ -134,18 +134,18 @@ main {
     color: #fff;
     padding: 3px 4px;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 20px;
     border-radius: 5px;
 }
 
 .price {
-    font-size: 28px;
+    font-size: 35px;
     font-weight: 600;
 }
 
 .msrp {
     text-decoration: line-through;
-    font-size: 1.1rem;
+    font-size: 23px;
     font-weight: 500;
 }
 
