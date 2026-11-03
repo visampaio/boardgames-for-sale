@@ -41,7 +41,7 @@ async function parseSheet() {
     // Reads values on the spreadsheet, starting from row 2.
     const response = await gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: sheetId,
-      range: "A2:G100",
+      range: "A2:H100",
     });
 
   let completeList = response.result.values;
@@ -65,6 +65,7 @@ function Game(game) {
   this.link = game[2];
   this.price = game[3];
   this.msrp = game[4];
-  this.condition = game[5];
-  this.info = game[6];
+  this.discount = game[5];
+  this.condition = game[6];
+  this.info = game[7];
 }
