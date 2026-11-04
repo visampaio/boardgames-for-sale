@@ -83,6 +83,20 @@ function generateImage() {
     });;
 }
 
+function generateText() {
+    let text = "";
+
+    for (let i = 0; i < bgList.length; i++) {
+        text += 
+`
+${bgList[i].title} (${bgList[i].condition}) $${bgList[i].price}. ${bgList[i].info ? `${bgList[i].info}` : ""}
+`
+    }
+
+    const file = new Blob([text], {type: "text/plain"})
+    saveAs(window.URL.createObjectURL(file), "boardgame-sale.txt")
+}
+
 // https://stackoverflow.com/a/51478809
 function saveAs(uri, filename) {
 
