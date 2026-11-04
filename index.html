@@ -11,6 +11,13 @@
       <button onclick="generateImage()">Download as image</button>
       <div id="pageSettings">
         <label><input type="checkbox" id="hideDetails" checked>Hide details</label>
+        <select id="sortOrder">
+          <option value="discountLtoH">Discount: Low to High</option>
+          <option value="discountHtoL" selected>Discount: High to Low</option>
+          <option value="priceLtoH">Price: Low to High</option>
+          <option value="priceHtoL">Price: High to Low</option>
+          <option value="lastUpdate">Last updated</option>
+        </select>
       </div>
     </aside>
 

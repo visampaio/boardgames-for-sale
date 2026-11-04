@@ -1,8 +1,11 @@
 let bgList = [];
 const main = document.getElementsByTagName("main")[0];
 const hideDetails = document.getElementById("hideDetails");
+const sortOrder = document.getElementById("sortOrder");
 
 function displayGames(array) {
+    sortList(sortOrder.value);
+    array = bgList;
     let string = "";
     for (let i = 0; i < array.length; i++) {
         let percentageOff = calcDiscount(array[i]);
@@ -35,6 +38,26 @@ function calcDiscount(array) {
     else { discount = 100 - Math.round(Number(array.price)*100/Number(array.msrp)) + "% off"; }
 
     return discount;
+}
+
+function sortList(order) {
+    switch (order) {
+        case "discountLtoH":
+            bgList.sort((a, b) => parseFloat(a.discount) - parseFloat(b.discount));
+            break;
+        case "discountHtoL":
+            bgList.sort((a, b) => parseFloat(b.discount) - parseFloat(a.discount));
+            break;
+        case "priceLtoH":
+            bgList.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+            break;
+        case "priceHtoL":
+            bgList.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+            break;
+        case "lastUpdate":
+            bgList.sort((a, b) => new Date(b.date) - new Date(a.date));
+            break;
+    }
 }
 
 function generateImage() {
@@ -70,6 +93,11 @@ function saveAs(uri, filename) {
 
     }
 }
+
+sortOrder.addEventListener("change", function() {
+    sortList(sortOrder.value);
+    displayGames(bgList);
+})
 
 hideDetails.addEventListener("change", function() {
     const divs = document.querySelectorAll(".details");

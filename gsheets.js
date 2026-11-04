@@ -41,12 +41,12 @@ async function parseSheet() {
     // Reads values on the spreadsheet, starting from row 2.
     const response = await gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: sheetId,
-      range: "A2:H100",
+      range: "A2:I100",
     });
 
   let completeList = response.result.values;
     bgList = completeList.map(row => new Game(row));
-    displayGames(bgList);
+    displayGames();
   } catch (error) {
     if (retries > 0) {
       console.log(`Encountered ${error.status}. Retrying in 2s...`);
@@ -68,4 +68,5 @@ function Game(game) {
   this.discount = game[5];
   this.condition = game[6];
   this.info = game[7];
+  this.date = game[8];
 }

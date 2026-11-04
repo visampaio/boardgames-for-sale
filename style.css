@@ -84,6 +84,14 @@ input[type='checkbox'] {
     accent-color: #DB4D0B;
 }
 
+select {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #DB4D0B;
+    background-color: #FFF;
+    border-radius: 25px;
+}
+
 main {
     margin: 20px auto;
     width: 80%;
