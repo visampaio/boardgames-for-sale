@@ -59,7 +59,9 @@ body {
 
 aside {
     padding: 20px;
-    position: fixed;
+    position: sticky;
+    top: 0;
+    height: fit-content;
 }
 
 button {
@@ -93,7 +95,6 @@ select {
 }
 
 main {
-    margin: 20px auto;
     width: 80%;
     display: grid;
     position: relative;

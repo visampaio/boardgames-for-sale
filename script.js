@@ -2,6 +2,7 @@ let bgList = [];
 const main = document.getElementsByTagName("main")[0];
 const hideDetails = document.getElementById("hideDetails");
 const sortOrder = document.getElementById("sortOrder");
+const lastDate = document.getElementById("lastDate");
 
 function displayGames(array) {
     sortList(sortOrder.value);
@@ -105,3 +106,13 @@ hideDetails.addEventListener("change", function() {
         divs[i].classList.toggle("removed");
     }
 })
+
+function addDate(rawDate) {
+    let date = new Date(rawDate);
+    let formatted = date.toLocaleDateString("en-CA", {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+    })
+    return formatted;
+}

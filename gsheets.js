@@ -47,6 +47,9 @@ async function parseSheet() {
   let completeList = response.result.values;
     bgList = completeList.map(row => new Game(row));
     displayGames();
+    sortList("lastUpdate");
+    lastDate.textContent += addDate(bgList[0].date);
+
   } catch (error) {
     if (retries > 0) {
       console.log(`Encountered ${error.status}. Retrying in 2s...`);
