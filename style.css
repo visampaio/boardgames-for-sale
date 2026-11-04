@@ -94,8 +94,13 @@ select {
     border-radius: 25px;
 }
 
-main {
+.mainWrapper {
     width: 80%;
+    text-align: center;
+}
+
+main {
+    width: 100%;
     display: grid;
     position: relative;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -165,4 +170,10 @@ main {
 
 .removed {
     display: none;
+}
+
+#pageNum {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 10px;
 }

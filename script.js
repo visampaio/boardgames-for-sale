@@ -1,12 +1,18 @@
 let bgList = [];
+let pageList = [];
+let pageNum = 0;
 const main = document.getElementsByTagName("main")[0];
 const hideDetails = document.getElementById("hideDetails");
 const sortOrder = document.getElementById("sortOrder");
 const lastDate = document.getElementById("lastDate");
 
-function displayGames(array) {
+function displayGames() {
     sortList(sortOrder.value);
-    array = bgList;
+    pageList = createPages();
+
+    let array = pageList[pageNum];
+    document.getElementById("pageNum").textContent = pageNum;
+    
     let string = "";
     for (let i = 0; i < array.length; i++) {
         let percentageOff = calcDiscount(array[i]);
@@ -30,6 +36,15 @@ function displayGames(array) {
         </div>`
     }
     main.innerHTML = string;
+}
+
+function createPages() {
+    let pages = [];
+    for (let i = 0; i < bgList.length; i+= 25) {
+        pages.push(bgList.slice(i, i + 25));
+    }
+
+    return pages;
 }
 
 function calcDiscount(array) {
@@ -97,15 +112,17 @@ function saveAs(uri, filename) {
 
 sortOrder.addEventListener("change", function() {
     sortList(sortOrder.value);
+    pageNum = 0;
     displayGames(bgList);
-})
+    window.scrollTo(0, 0);
+});
 
 hideDetails.addEventListener("change", function() {
     const divs = document.querySelectorAll(".details");
     for (let i = 0; i < divs.length; i++) {
         divs[i].classList.toggle("removed");
     }
-})
+});
 
 function addDate(rawDate) {
     let date = new Date(rawDate);
@@ -116,3 +133,15 @@ function addDate(rawDate) {
     })
     return formatted;
 }
+
+document.getElementById("pageUp").addEventListener("click", function() {
+    pageNum == pageList.length ? "" : pageNum++;
+    displayGames();
+    window.scrollTo(0, 0);
+});
+
+document.getElementById("pageDown").addEventListener("click", function() {
+    pageNum == 0 ? "" : pageNum--;
+    displayGames();
+    window.scrollTo(0, 0);
+});
