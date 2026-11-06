@@ -71,6 +71,8 @@ button {
     background-color: #DB4D0B;
     color: white;
     font-size: 1rem;
+    display: block;
+    margin: 15px 0;
 }
 
 label {
