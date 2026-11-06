@@ -179,3 +179,51 @@ main {
   font-weight: 600;
   margin: 0 10px;
 }
+
+@media (max-width: 1250px) {
+  body {
+    display: block;
+  }
+
+  aside {
+    position: relative;
+    font-size: 2rem;
+  }
+
+  button {
+    display: inline;
+  }
+
+  button, #pageSettings, select {
+    font-size: 2rem;
+  }
+
+  input[type="checkbox"] {
+    height: 30px;
+    width: 30px;
+  }
+
+  .mainWrapper {
+    margin: 0 auto;
+  }
+
+  main {
+    display: block;
+  }
+
+  .media img {
+    height: 300px;
+  }
+
+  .percentageOff, .card h1  {
+    font-size: 2.5rem;
+  }
+
+  .price {
+    font-size: 3rem;
+  }
+
+  .msrp, .details {
+    font-size: 1.8rem;
+  }
+}
