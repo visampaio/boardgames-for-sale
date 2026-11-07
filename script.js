@@ -138,11 +138,17 @@ hideDetails.addEventListener("change", function() {
 });
 
 function addDate(rawDate) {
-    let date = new Date(rawDate);
-    let formatted = date.toLocaleDateString("en-CA", {
+    // https://stackoverflow.com/a/35205782
+    const dateArray = rawDate.split("-");
+    const year = dateArray[0];
+    const month = parseInt(dateArray[1], 10) - 1;
+    const day = dateArray[2];
+
+    const date = new Date(year, month, day);;
+    const formatted = date.toLocaleDateString("en-CA", {
         month: "long",
         day: "numeric",
-        year: "numeric"
+        year: "numeric",
     })
     return formatted;
 }
