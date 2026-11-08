@@ -125,7 +125,6 @@ function saveAs(uri, filename) {
 }
 
 sortOrder.addEventListener("change", function() {
-    sortList(sortOrder.value);
     //pageNum = 0;
     displayGames(bgList);
     window.scrollTo(0, 0);
