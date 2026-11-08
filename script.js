@@ -88,7 +88,8 @@ function generateText() {
 
     for (let i = 0; i < bgList.length; i++) {
         text += 
-`- ${bgList[i].title} (${bgList[i].condition}) $${bgList[i].price.slice(0, -3)}${bgList[i].info ? `. ${bgList[i].info}` : ""}
+`- ${bgList[i].title} (${bgList[i].condition}) $${bgList[i].price.slice(0, -3)}. ${bgList[i].info ? `
+${bgList[i].info}` : ""}
 
 `
     }
