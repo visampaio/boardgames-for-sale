@@ -46,9 +46,9 @@ async function parseSheet() {
 
   let completeList = response.result.values;
     bgList = completeList.map(row => new Game(row));
-    displayGames();
     sortList("lastUpdate");
     lastDate.textContent += addDate(bgList[0].date);
+    displayGames();
 
   } catch (error) {
     if (retries > 0) {
